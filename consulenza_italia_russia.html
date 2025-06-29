@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il tuo ponte verso l'Italia - Consulenza per cittadini russi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+        }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* bianco traslucido */
+    z-index: -1;
+}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%23e8f4f8"/><circle cx="200" cy="150" r="80" fill="%23d4e6f1" opacity="0.6"/><circle cx="800" cy="400" r="120" fill="%23fdebd0" opacity="0.5"/><circle cx="1000" cy="200" r="60" fill="%23fadbd8" opacity="0.4"/></svg>') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #f39c12;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #f39c12;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* How it works */
+        .how-it-works {
+            background-color: #f8f9fa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* Contact Form */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #f39c12;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .language-note {
+            font-style: italic;
+            color: #bdc3c7;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card, .testimonial, .step {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Natalia Consulenza Italia</div>
+            <ul class="nav-links">
+                <li><a href="#about">Chi sono</a></li>
+                <li><a href="#services">Servizi</a></li>
+                <li><a href="#testimonials">Testimonianze</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Il tuo ponte verso l'Italia</h1>
+                <p>Aiutiamo i cittadini stranieri a costruire una nuova vita in Italia: studio, visti, borse di studio e molto altro</p>
+                <a href="#contact" class="cta-button">Prenota una consulenza gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Chi sono</h2>
+            <div class="about-content">
+                <div class="about-image">
+    <div class="profile-image" style="border-radius: 15px; overflow: hidden; padding: 0;">
+        <img src="profile.jpg" alt="Foto profilo Natalia" style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div>
+</div>
+
+                <div class="about-text">
+                    <p>Ciao! Sono <strong>Natalia</strong> e da oltre 3 anni aiuto cittadini esteri a realizzare il loro sogno di studiare e vivere in Italia.</p>
+                    
+                    <p>La mia esperienza personale inizia dal mio trasferimento in Italia per gli studi universitari. Ho vissuto in prima persona tutte le difficoltà burocratiche, le sfide linguistiche e i momenti di incertezza che ogni studente straniero affronta.</p>
+                    
+                    <p>Oggi conosco perfettamente il sistema universitario italiano, i bandi per le borse di studio (DSU, MAECI, ISU Bocconi4access e molte altre), le procedure per visti e permessi di soggiorno. Ho aiutato oltre <strong>150 studenti</strong> a ottenere l'ammissione nelle migliori università italiane.</p>
+                    
+                    <p>Il mio obiettivo è semplice: rendere il tuo percorso verso l'Italia più facile e sicuro, accompagnandoti passo dopo passo con competenza e calore umano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Cosa posso fare per te</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Ammissione Università</h3>
+                    <p>Ti aiuto a scegliere l'università giusta, preparare i documenti necessari e completare le procedure di ammissione. Conosco tutti i requisiti specifici.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Borse di Studio</h3>
+                    <p>Consulenza specializzata su DSU, MAECI, Bocconi e altre borse di studio. Ti aiuto a preparare domande vincenti e rispettare tutte le scadenze.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Visti e Permessi</h3>
+                    <p>Assistenza completa per visto studente, permesso di soggiorno e tutte le pratiche burocratiche. Niente stress, ci penso io!</p>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+    <div class="container">
+        <h2 class="section-title">Cosa dicono di me</h2>
+        <div class="testimonials-grid">
+            
+            <div class="testimonial">
+                <img src="1111.jpg" alt="Testimonianza di Dmitri" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                <div class="testimonial-author">- Dmitri, studente Bocconi Milano</div>
+            </div>
+            
+            <div class="testimonial">
+                <img src="2222.jpg" alt="Testimonianza di Ekaterina" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                <div class="testimonial-author">- Ekaterina, studentessa Sapienza Roma</div>
+            </div>
+            
+            <div class="testimonial">
+                <img src="3333.jpg" alt="Testimonianza di Sergey" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                <div class="testimonial-author">- Sergey, genitore</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Da dove iniziare</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Compila il form</h3>
+                    <p>Scrivimi utilizzando il modulo qui sotto. Raccontami il tuo obiettivo e la tua situazione attuale.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Ti ricontatto subito</h3>
+                    <p>Entro 24 ore ti contatterò per capire insieme quali sono le tue possibilità in Italia con una breve consulenza <strong>gratuita</strong>. Parleremo dei tuoi obiettivi e di come posso aiutarti.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Ti accompagno passo passo</h3>
+                    <p>Dopo una prima consulenza gratuita Insieme creeremo un piano personalizzato e ti seguirò in ogni fase, fino al raggiungimento del tuo obiettivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Scrivimi, ti risponderò personalmente</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Il tuo nome *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Racconta il tuo progetto *</label>
+                    <textarea id="message" name="message" placeholder="Scrivi qui qual è il tuo obiettivo: quale università, che tipo di corso, quando vorresti iniziare..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Invia la richiesta</button>
+                  </form>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                Vuoi raccontarmi meglio la tua situazione?<br>
+                Compila il <strong>form dettagliato</strong> qui:
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdh2kSre-AvpAm3oXwZ7KGzLqRrYF5Ur395CtgKo1U_P39Fcw/viewform?usp=sf_link" target="_blank" class="cta-button" style="background: linear-gradient(45deg, #3498db, #2980b9); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);">
+                Compila il form dettagliato
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+    <h3>Contatti Diretti</h3>
+    <ul class="contact-info">
+        <li>💬 Telegram personale: <a href="https://t.me/Nat_Situ" target="_blank" style="color: #f39c12; text-decoration: underline;">@Nat_Situ</a></li>
+ 	<li>💬 Telegram dei miei servizi: <a href="https://t.me/unouniitaly" target="_blank" style="color: #f39c12; text-decoration: underline;">@Unouniitaly</a></li>
+    </ul>
+</div>
+
+<div class="footer-section">
+    <h3>Seguimi Online</h3>
+    <ul class="contact-info">
+        <li>📸 Instagram: <a href="https://www.instagram.com/unouni.italy?igsh=MTlncmt2bDFibjJzbw==" target="_blank" style="color: #f39c12; text-decoration: underline;">@unouni.italy</a></li>
+        <li>💼 LinkedIn: <a href="https://www.linkedin.com/in/natalia-situkhina-05865218a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" style="color: #f39c12; text-decoration: underline;">Profilo LinkedIn</a></li>
+    </ul>
+</div>
+
+                
+                <div class="footer-section">
+                    <h3>Lingue Parlate</h3>
+                    <p class="language-note">Parlo fluentemente:<br>🇮🇹 Italiano<br>🇷🇺 Russo<br>🇬🇧 Inglese</p>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #34495e; padding-top: 1rem; margin-top: 2rem;">
+                <p>&copy; 2025 Natalia Consulenza Italia. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Per favore, compila tutti i campi obbligatori.');
+                return;
+            }
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Richiesta consulenza da ' + name);
+            const body = encodeURIComponent(`Ciao Anna,
+
+Mi chiamo ${name} e ti scrivo per richiedere una consulenza.
+
+Il mio progetto:
+${message}
+
+La mia email: ${email}
+
+Grazie per il tuo tempo!
+
+${name}`);
+            
+            const mailtoLink = `mailto:anna.consulenza@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            alert('Ti sto reindirizzando al tuo client email. Se non si apre automaticamente, scrivi a: anna.consulenza@gmail.com');
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .testimonial, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+
+
+</body>
+</html>
